@@ -1,0 +1,9 @@
+spring:
+    thymeleaf:
+        prefix: /WEB-INF/view/
+        cache: false
+    datasource:
+        url: jdbc:postgresql://localhost:5432/blank
+        username: dbuser
+        password: dbpass
+        driver-class-name: org.postgresql.Driver

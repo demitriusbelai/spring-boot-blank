@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Departamentos</title>
+        <meta charset="UTF-8"/>
+        <meta name="header" content="Departamentos"/>
+        <style>
+            table td, table th {
+                padding: 0.2em;
+            }
+            form {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th>Unidade</th>
+                  <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="departamento : ${departamentos}">
+                  <td th:text="${departamento.nome}">Nome</td>
+                  <td th:text="${departamento.unidade.nome}">Unidade</td>
+                  <td>
+                      <a th:href="@{/departamento/editar/{id}(id=${departamento.id})}" class="glyphicon glyphicon-edit btn btn-default btn-xs"></a>
+                      <form th:action="@{/departamento/excluir/{id}(id=${departamento.id})}" method="post">
+                            <button class="glyphicon glyphicon-trash btn btn-default btn-xs"></button>
+                      </form>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/departamento/incluir}" class="btn btn-default" type="button">Incluir</a>
+    </body>
+</html>

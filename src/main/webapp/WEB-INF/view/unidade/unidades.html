@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Unidades</title>
+        <meta charset="UTF-8"/>
+        <meta name="header" content="Unidades"/>
+        <style>
+            table td, table th {
+                padding: 0.2em;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="unidade : ${unidades}">
+                  <td th:text="${unidade.nome}">Nome</td>
+                  <td>
+                      <a th:href="@{/unidade/editar/{id}(id=${unidade.id})}" class="glyphicon glyphicon-edit btn btn-default btn-xs"></a>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
