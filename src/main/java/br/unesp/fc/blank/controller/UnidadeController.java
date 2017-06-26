@@ -62,7 +62,7 @@ public class UnidadeController {
     }
 
     @PostMapping(value="/unidade/telefone/remover/{index}")
-    public String adicionarTelefone(@PathVariable Integer index,
+    public String removerTelefone(@PathVariable Integer index,
             @ModelAttribute UnidadeDTO unidadeDTO, Model model) {
         unidadeDTO.getTelefones().remove(index.intValue());
         model.addAttribute("unidade", unidadeDTO);
