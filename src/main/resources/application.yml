@@ -1,7 +1,8 @@
 spring:
-    thymeleaf:
-        prefix: /WEB-INF/view/
-        cache: false
+    mvc:
+        view:
+            prefix: /WEB-INF/view/
+            suffix: .jsp
     datasource:
         url: jdbc:postgresql://localhost:5432/blank
         username: dbuser

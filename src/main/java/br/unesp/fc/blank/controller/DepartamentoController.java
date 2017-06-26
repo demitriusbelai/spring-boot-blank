@@ -1,9 +1,11 @@
 package br.unesp.fc.blank.controller;
 
 import br.unesp.fc.blank.data.Departamento;
+import br.unesp.fc.blank.data.Unidade;
 import br.unesp.fc.blank.dto.DepartamentoDTO;
 import br.unesp.fc.blank.service.DepartamentoService;
 import br.unesp.fc.blank.service.UnidadeService;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class DepartamentoController {
     @GetMapping(value="/departamento/incluir")
     public String incluir(Model model) {
         model.addAttribute("departamento", new DepartamentoDTO());
-        model.addAttribute("unidades", unidadeService.listar());
+        model.addAttribute("unidades", unidadeService.listar().stream().collect(Collectors.toMap(Unidade::getId, Unidade::getNome)));
         return "departamento/cadastro";
     }
 
@@ -44,7 +46,7 @@ public class DepartamentoController {
         departamentoDTO.setUnidade(departamento.getUnidade().getId());
 
         model.addAttribute("departamento", departamentoDTO);
-        model.addAttribute("unidades", unidadeService.listar());
+        model.addAttribute("unidades", unidadeService.listar().stream().collect(Collectors.toMap(Unidade::getId, Unidade::getNome)));
         return "departamento/cadastro";
     }
 
