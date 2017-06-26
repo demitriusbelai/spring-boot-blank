@@ -53,6 +53,9 @@ public class UnidadeController {
 
     @PostMapping(value="/unidade/telefone/adicionar")
     public String adicionarTelefone(@ModelAttribute UnidadeDTO unidadeDTO, Model model) {
+        if (unidadeDTO.getTelefones() == null) {
+            unidadeDTO.setTelefones(new ArrayList());
+        }
         unidadeDTO.getTelefones().add(new UnidadeTelefoneDTO());
         model.addAttribute("unidade", unidadeDTO);
         return "unidade/cadastro";
